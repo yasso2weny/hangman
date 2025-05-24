@@ -1,0 +1,70 @@
+body.active-modal {
+  overflow-y: hidden;
+}
+// Container Mixin
+@mixin container{
+  background: linear-gradient(to bottom, #344aba, rgba(0, 20, 121, 0.83));
+  box-shadow: inset 0px -8px #140e66, inset 0px 6px #2463ff;
+  border-radius: 72px;
+}
+
+@mixin base-btn($bg, $shadow...) {
+  font-family: var(--primary-font);
+  color: var(--white);
+  font-size: var(--heading-s);
+  background: $bg;
+  box-shadow: $shadow;
+  border: none;
+  text-transform: capitalize;
+  border-radius: 100px;
+  padding-inline: 64px;
+  padding-block: 12px;
+  cursor: pointer;
+  &:hover {
+    transition: 300ms ease;
+    background-color: #5b8aff;
+  }
+}
+
+.btn {
+  @include base-btn(var(--blue), inset 0 -2px 0 3px #140e66, inset 0 1px 0 6px #3c74ff);
+  text-transform: uppercase;
+}
+.quit-btn {
+  @include base-btn(linear-gradient(0deg, #7199ff 0%, #fe71fe 100%), inset 0 -2px 0 3px #140e66, inset 0 1px 0 6px #c642fb)
+}
+
+.modal,
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.modal {
+   z-index: 10000;
+}
+
+.overlay {
+  background: rgba(49, 49, 49, 0.8);
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  @include container();
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  height: 445px;
+  width: 500px;
+  background: linear-gradient(to right, #344ABA 0%, #001479 83%);
+}
